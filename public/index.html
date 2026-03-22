@@ -139,15 +139,15 @@
 
    <script>
     function drawTable(records){
-      
-      let result = document.querySelector('#result'); //get render target
-      
-      //build html string based on data
+      console.log('hello', records);
       let html='';
-    
+      let result = document.querySelector('#result');
+
+      let count = 0;
+      
       for(let rec of records){
-       //interpolate data into template
         html+=`<tr>
+         <td>${count}</td>
          <td>${rec.character}</td>
          <td>${rec.gameSeries}</td>
          <td>
@@ -157,19 +157,28 @@
            ${rec.release.na}
          </td>
        </tr>`;
+        count++;
+        if (count > 100) break;
       }
-      //add html string to the DOM
+
       result.innerHTML = html;
-    }
     
+    }
+
+    let state = [];
+
     async function getData(){
-      const response = await fetch('https:weblabs.web.app/data/amiibo.json');
+      const response = await fetch('https://amiiboapi.org/api/amiibo/');
       const data = await response.json();
-      drawTable(data.amiibo.slice(0, 100)); 
-      //slice method is used to use the first 100 records
+      return data.amiibo.slice(0, 100);//gets first 100 items (too much data)
     }
-    
-    getData();
+
+    async function showAllGames(){
+        state = await getData();
+        drawTable(state);
+    }
+
+    showAllGames(); 
    </script>
 </body>
 
