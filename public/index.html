@@ -130,22 +130,47 @@
          <th>Release</th>
        </tr>
      </thead>
-     <tbody>
-       <tr>
-         <td>Mario</td>
-         <td>Super Mario</td>
-         <td>
-           <img src="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png">
-         </td>
-         <td>
-           2014-11-21
-         </td>
-       </tr>
+     <tbody id="result">
      </tbody>
     
     </table>
  
    </main>
+
+   <script>
+    function drawTable(records){
+      
+      let result = document.querySelector('#result'); //get render target
+      
+      //build html string based on data
+      let html='';
+    
+      for(let rec of records){
+       //interpolate data into template
+        html+=`<tr>
+         <td>${rec.character}</td>
+         <td>${rec.gameSeries}</td>
+         <td>
+           <img src="${rec.image}">
+         </td>
+         <td>
+           ${rec.release.na}
+         </td>
+       </tr>`;
+      }
+      //add html string to the DOM
+      result.innerHTML = html;
+    }
+    
+    async function getData(){
+      const response = await fetch('https:weblabs.web.app/data/amiibo.json');
+      const data = await response.json();
+      drawTable(data.amiibo.slice(0, 100)); 
+      //slice method is used to use the first 100 records
+    }
+    
+    getData();
+   </script>
 </body>
 
 </html>
