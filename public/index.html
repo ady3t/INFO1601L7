@@ -1,13 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+        box-sizing: border-box;
+     }
+
+     body{
+        display: flex;
+        padding: 0;
+        margin: 0;
+        background-color: gainsboro;
+        flex-direction: column;
+        gap: 10px;
+     }
+    
+      nav {
+      padding: 10px;
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+      font-family: monospace;
+      background-color: blue;
+      display: flex;
+      flex-grow: 1;
+      box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.31);
+    }
+
+    main{
+      margin-right: auto;
+      margin-left: auto;
+      width: 95vw;
+      display: flex;
+      flex-grow: 10;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    section{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;      
+    }
+    nav {
+      padding: 10px;
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+      font-family: monospace;
+      background-color: blue;
+      display: flex;
+      flex-grow: 1;
+      box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.31);
+    }
+
+    main{
+      margin-right: auto;
+      margin-left: auto;
+      width: 95vw;
+      display: flex;
+      flex-grow: 10;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    section{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;      
+    }
+
+    .card{
+      border-radius: 2px;
+      background-color: white;
+      font-size: 0.7em;
+      padding: 8px;
+      box-shadow: -11px 9px 5px -4px rgba(0,0,0,0.31);
+      border: 1px solid gainsboro;
+    }
+
+    table{
+      border-collapse: collapse; /*removes the default table borders*/
+    }
+
+    thead, th{
+      background-color: blue;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    td {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    tr:nth-child(even){
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    table img{
+      height: 100px;
+    }
+    </style>
+</head>
+
 <body>
   <nav>
     Amiibo App
   </nav>
   <main>
   
-    <section>
+    <section class="card">
     </section>
 
-    <table>
+    <table class="card">
      <thead>
         <tr>
          <th>Name</th>
@@ -33,3 +147,6 @@
  
    </main>
 </body>
+
+</html>
+
