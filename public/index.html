@@ -93,6 +93,12 @@
       font-size: 1.5em;
     }
 
+    thead button {
+      height: 20px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
     td {
       font-size: 1.5em;
       text-align: center;
@@ -138,7 +144,7 @@
     <table class="card">
      <thead>
         <tr>
-         <th>Name</th>
+         <th>Name <button onclick="sortByName()">Sort</button></th>
          <th>Series</th>
          <th>Image</th>
          <th>Release</th>
@@ -231,6 +237,17 @@
         //draw table with the search results
         drawTable(results);
       }
+    }
+
+
+    //compares the character fields of the items in the array
+    function nameCompare(a, b){
+      return a.character.localeCompare(b.character);
+    }
+    
+    function sortByName(){
+      let result = state.sort(nameCompare);
+      drawTable(result);
     }
    </script>
 </body>
