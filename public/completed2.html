@@ -120,7 +120,7 @@
       Animal Crossing
     </button>
 
-    <button onclick="filterBySeries('Breath of the Wild')">
+    <button onclick="filterBySeries('The Legend of Zelda')">
       Breath of the Wild
     </button>
 
@@ -138,6 +138,7 @@
  <table class="card">
    <thead>
       <tr>
+       <th>ID</th>
        <th>Name <button onclick="sortByName()">Sort</button> </th>
        <th>Series</th>
        <th>Image</th>
@@ -158,7 +159,7 @@
     let state = [];
     let bookmarks = [];
 
-    async function drawTable(records){
+    function drawTable(records){
       let html='';
       let result = document.querySelector('#result');
       
@@ -166,6 +167,7 @@
       for(let i=0; i<records.length; i++){
         let rec = records[i];
         html+=`<tr>
+         <td>${i}</td>
          <td>${rec.character}</td>
          <td>${rec.gameSeries}</td>
          <td>
@@ -187,7 +189,7 @@
 
 
     async function getData(){
-      const response = await fetch('https://amiiboapi.com/api/amiibo/');
+      const response = await fetch('https://amiiboapi.org/api/amiibo/');
       const data = await response.json();
       return data_slice = data.amiibo.slice(0, 100);//gets first 100 items (too much data)
     }
