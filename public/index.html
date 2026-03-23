@@ -130,6 +130,9 @@
         <button onclick="filterBySeries('Super Mario')">
           Super Mario
         </button>
+
+        <input type="search" id="searchKey" placeholder="search name">
+        <button onclick=search()>Search</button>
     </section>
 
     <table class="card">
@@ -204,6 +207,30 @@
           filtered.push(rec);
       }
       drawTable(filtered);
+    }
+
+
+    function search(){
+      //get the search term from the input field
+      let searchKey = document.querySelector('#searchKey').value;
+      
+      let results = [];
+    
+      //iterate all the records in the global state
+      for(let rec of state){
+    
+        //capitalize the search term and text to be case insensitive
+        let searchText = rec.character.toUpperCase();
+        searchKey = searchKey.toUpperCase();
+    
+        //add to resulting array if search term is in the text
+        if ( searchText.search(searchKey) !== -1 ){
+          results.push(rec);
+        }
+    
+        //draw table with the search results
+        drawTable(results);
+      }
     }
    </script>
 </body>
